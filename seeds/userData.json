@@ -1,0 +1,22 @@
+[
+    {
+        "name": "XVergara",
+        "email": "xv@gmail.com",
+        "password": "pass123"
+    },
+    {
+        "name": "IDaniels",
+        "email": "id@gmail.com",
+        "password": "456pass"
+    },
+    {
+        "name": "JDettelback",
+        "email": "jd@gmail.com",
+        "password": "7pass89"
+    },
+    {
+        "name": "BDavie",
+        "email": "bd@gmail.com",
+        "password": "lastpass"
+    }
+]

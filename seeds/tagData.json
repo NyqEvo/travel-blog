@@ -1,0 +1,14 @@
+[
+    {
+        "foodDrink": true,
+        "post_id": 1
+    },
+    {
+        "transportaion": true,
+        "post_id": 2
+    },
+    {
+        "entertainment": true,
+        "post_id": 3
+    }
+]
