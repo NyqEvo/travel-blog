@@ -1,13 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-const { takeRight } = require('lodash');
 
-class Tag extends Model {
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-    }
-}
+class Tag extends Model {}
+
 
 Tag.init(
     {
@@ -29,7 +24,21 @@ Tag.init(
         },
         accommodations: {
             type: DataTypes.BOOLEAN,
-        } 
+        },
+        post_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'post',
+                key: 'id'
+            }
+        }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'tag',
     }
 )
 
