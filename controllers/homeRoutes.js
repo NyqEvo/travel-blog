@@ -19,9 +19,10 @@ router.get('/post/:id', async (req, res) => {
                 {
                     //data related to posts
                 }
-            ]});
-            res.send('REPLACE ME LATER')
-    }catch (err){
+            ]
+        });
+        res.send('REPLACE ME LATER')
+    } catch (err) {
         res.status(500).json(err);
     }
 });
@@ -29,11 +30,22 @@ router.get('/post/:id', async (req, res) => {
 // If the user is already logged in, redirect the request to another route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-      res.redirect('/home');
-      return;
+        res.redirect('/');
+        return;
     }
-  
+
     res.render('login');
-  });
-  
-  module.exports = router;
+});
+
+
+router.get('/signup', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('signup');
+});
+
+module.exports = router;
