@@ -14,31 +14,20 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" href="../public/style.css" />
-    <!--style>
-      .carousel-inner > .item > img,
-      .carousel-inner > .item > a > img {
-        width: 500px;
-        height: 400px;
-        margin: auto;
-      }
-   
-
-        width: 70%;
-        height: 850px;
-        margin: auto;
-      }
-
-      header {
-        display: inline-flex;
-        justify-content: flex-end;
-      }
-    </style-->
+    
   </head>
 
   <body>
-    <header></header>
+    <header>
+      {{#if logged_in}}
+      <a href="../utils/profile.js">profile</a> |
+      <button class="no-button" id="logout">logout</button>
+      {{else}}
+      <a href="../utils/login.js">login</a>
+      {{/if}}
+    </header>
 
-    <div class="container">
+    <div class="container-xl">
       <div class="row">
         <div class="col-sm-2 col-sm border p-2 border-danger bg-info">
           sidebar
@@ -91,7 +80,8 @@
                   <img
                     src="../images/london.jpg"
                     class="d-block w-100"
-                    alt="..."
+                    alt="..." 
+                    style="height: 600px;"
                   />
                   <div class="carousel-caption d-none d-md-block">
                     <h5>First slide label</h5>
@@ -105,7 +95,8 @@
                   <img
                     src="../images/nyc.jpg"
                     class="d-block w-100"
-                    alt="..."
+                    alt="..." 
+                    style="height: 600px;"
                   />
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Second slide label</h5>
@@ -119,7 +110,8 @@
                   <img
                     src="../images/paris.jpg"
                     class="d-block w-100"
-                    alt="..."
+                    alt="..." 
+                    style="height: 600px;"
                   />
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Third slide label</h5>
@@ -158,10 +150,14 @@
           </div>
         </div>
       </div>
+      {{{ body }}}
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    {{#if logged_in}}
+    <script src="../utils/logout.js"></script>
+    {{/if}}
   </body>
 </html>
