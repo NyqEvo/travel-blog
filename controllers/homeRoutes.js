@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 //render homepage
 router.get('/', async (req, res) => {
     try {
-        res.render('homepage')
+        res.render('landing')
     } catch (err) {
         res.status(500).json(err);
     }
