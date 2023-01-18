@@ -1,0 +1,17 @@
+[
+    {
+        "img": "#",
+        "description": "New York",
+        "user_id": 1
+    },
+    {
+        "img": "#",
+        "description": "London",
+        "user_id": 2
+    },
+    {
+        "img":"#",
+        "description": "Tokyo",
+        "user_id": 3
+    }
+]
