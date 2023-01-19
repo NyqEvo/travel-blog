@@ -8,9 +8,9 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: Post
-                }
-            ]
-    })
+                },
+            ],
+    });
 
         const tags = tagData.get({ plain: true });
         res.status(200).json(tags)
@@ -26,9 +26,9 @@ router.get('/:id', async (req, res) => {
             include: [
                 {
                     model: Post
-                }
-            ]
-        })
+                },
+            ],
+        });
 
         const tags = tagData.get({ plain: true });
         res.status(200).json(tags)
