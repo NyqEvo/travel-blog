@@ -1,43 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-2 col-sm border border-primary">Sidebar</div>
-    <div class="col-sm-10 col-sm border border-danger">
-      <div class="row">
-        <div class="col-sm border border-success">Calendar</div>
-        <div class="col-sm">
-          <div class="border border-info">Notes</div>
-          <div class="border border-primary">Photos</div>
+
+  
+    <div class="mt-4">
+    
+
+      <nav class="navbar navbar-light border-primary">
+        <a class="navbar-brand">Comments</a>
+        <div class="dropdown">
+        <a
+          class="btn btn-sm btn-secondary dropdown-toggle"
+          href="#"
+          role="button"
+          data-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Categories
+        </a>
+
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Accommodations</a>
+          <a class="dropdown-item" href="#">Food/Drink</a>
+          <a class="dropdown-item" href="#">Entertainment</a>
         </div>
-      </div>
-      <div class="col col-sm border border-danger">Description</div>
-
-      <div class="col col-sm border border-success">Posts</div>
-      <div>
-
-      {{#each posts as |post|}}
-        <div>
-          <h2>
-            {{post.id}}
-          </h2>
-          <h3>
-
-        {{post.description}}
-          </h3>
-          <h4>
-
-        {{post.user_id}}
-          </h4>
-          <h5>
-        {{post.user.name}}
-
-          </h5>
-        </div>
-      {{/each}}
-      </div>
+      </nav>
+      
     </div>
-  </div>
-</div>
+       
+        {{/each}}
+      
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
