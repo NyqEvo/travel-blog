@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment, Tag, PostTags } = require('../models');
-const withAuth = require('../utils/auth');
+const withAuth = require('../routes/auth');
 
 //const Calendar = require("calendar");
 //Calendar = require("calendar").Calendar;
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
         const posts = postdata.map((post) => post.get({ plain: true }));
 
-        res.render('landing', {
+        res.render('layout', {
             ...posts,
             logged_in: req.session.logged_in
         });
