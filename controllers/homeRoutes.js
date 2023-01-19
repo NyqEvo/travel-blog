@@ -1,12 +1,36 @@
 const router = require('express').Router();
 const { Post, User, Comment, Tag, PostTags } = require('../models');
-const withAuth = require('../routes/auth');
+const withAuth = require('../utils/auth');
 
 //const Calendar = require("calendar");
 //Calendar = require("calendar").Calendar;
 
 //render homepage
 router.get('/', async (req, res) => {
+    try {
+        // const postdata = await Post.findAll({
+        //     include: [
+        //         {
+        //             model:User,
+        //             attributes: ['name']
+        //         }
+        //     ]
+        // })
+
+        // const posts = postdata.map((post) => post.get({ plain: true }));
+
+        res.render('landing')
+// , {
+//             ...posts,
+//             logged_in: req.session.logged_in
+//         });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+);
+
+router.get('/layout', async (req, res) => {
     try {
         const postdata = await Post.findAll({
             include: [
@@ -18,7 +42,7 @@ router.get('/', async (req, res) => {
         })
 
         const posts = postdata.map((post) => post.get({ plain: true }));
-
+        console.log('posts:', posts)
         res.render('layout', {
             ...posts,
             logged_in: req.session.logged_in
@@ -54,7 +78,7 @@ router.get('/post/:id', async (req, res) => {
 // If the user is already logged in, redirect the request to another route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/');
+        res.redirect('/layout');
         return;
     }
 
@@ -65,7 +89,7 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
-        res.redirect('/');
+        res.redirect('/layout');
         return;
     }
 
