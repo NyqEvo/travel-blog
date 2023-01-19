@@ -44,7 +44,7 @@ router.get('/layout', async (req, res) => {
         const posts = postdata.map((post) => post.get({ plain: true }));
         console.log('posts:', posts)
         res.render('layout', {
-            ...posts,
+            posts,
             logged_in: req.session.logged_in
         });
     } catch (err) {

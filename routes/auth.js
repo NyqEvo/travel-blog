@@ -15,6 +15,7 @@ passport.use(
       scope: ["profile"],
     },
     function verify(issuer, profile, cb) {
+      console.log('passport callback')
       db.get(
         "SELECT * FROM federated_credentials WHERE provider = ? AND subject = ?",
         [issuer, profile.id],
