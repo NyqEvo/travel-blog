@@ -30,9 +30,9 @@ const sess = {
   },
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
+  // store: new SequelizeStore({
+  //   db: sequelize
+  // })
 };
 
 app.use(session(sess));
@@ -41,9 +41,12 @@ app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.use((req,res,next)=>{
+  console.log(`${req.method} request recived on end point: ${req.url}`);
+  next();
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use("/", indexRouter);
 app.use("/", authRouter);
