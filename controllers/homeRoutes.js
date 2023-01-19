@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Post, User, Comment, Tag, PostTags } = require('../models');
 const withAuth = require('../utils/auth');
 
+//const Calendar = require("calendar");
+//Calendar = require("calendar").Calendar;
+
 //render homepage
 router.get('/', async (req, res) => {
     try {
@@ -47,5 +50,21 @@ router.get('/signup', (req, res) => {
 
     res.render('signup');
 });
+
+// router.get("/calendar/:year/:month", async (req, res) => {
+//   try {
+//     cal = new Calendar();
+//     if (req.params.year && req.params.month) {
+//         days = cal.monthDays(parseInt(req.params.year), parseInt(req.params.month));
+
+//         console.log(days);
+//     }
+
+//     res.send("<pre>" + days + "</pre>");
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;

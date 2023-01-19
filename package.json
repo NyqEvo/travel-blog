@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "calendar": "^0.1.1",
     "connect-session-sequelize": "^7.1.5",
     "connect-sqlite3": "^0.9.13",
     "dotenv": "^8.2.0",
