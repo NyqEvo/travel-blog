@@ -6,6 +6,12 @@ const fse = require("fs-extra")
 
 //const Calendar = require("calendar");
 //Calendar = require("calendar").Calendar;
+const cloudinaryConfig = cloudinary.config({
+    cloud_name: process.env.CLOUDNAME,
+    api_key: process.env.CLOUDAPIKEY,
+    api_secret: process.env.CLOUDINARYSECRET,
+    secure: true
+  })
 
 //render homepage
 router.get('/', async (req, res) => {
