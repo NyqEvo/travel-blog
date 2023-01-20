@@ -5,10 +5,8 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
-//cloudinary reqirements
-require("dotenv").config()
-const cloudinary = require("cloudinary").v2
-const fse = require("fs-extra")
+
+
 
 //var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
