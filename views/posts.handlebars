@@ -47,6 +47,16 @@
         </div>
 
       </div>
+
+    {{!-- {{#if logged_in}} --}}
+    <button
+          id="createCommentBtn"
+          class="btn btn-sm btn-primary"
+          data-id="{{id}}"
+        >Create Comment</button>
+    {{!-- {{/if}} --}}
+      </div>
+
  {{#each post.comments as |comment|}}
        <p>
   
@@ -68,3 +78,5 @@
 </div>
 
 <script src="/js/comments.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/cloudinary.js"></script>
