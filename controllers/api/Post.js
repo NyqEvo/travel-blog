@@ -7,10 +7,10 @@ router.get('/', async (req, res) => {
         const postData = await Post.findAll({
             include: [
                 {
-                    model: Tag,
+                    model: Tag, through: PostTags,
                 },
                 {
-                    model: Comment,
+                    model: Comment, 
                 }
             ]
         })

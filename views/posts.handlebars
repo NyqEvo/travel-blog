@@ -19,7 +19,7 @@
         {{! add location }}
         {{post.location}}
         {{post.user.name}}
-        {{post.comment.info}}
+        {{!-- {{comment.info}} --}}
 
         <div class="input-group">
           <textarea
@@ -47,7 +47,15 @@
         </div>
 
       </div>
-
+ {{#each post.comments as |comment|}}
+       <p>
+  
+    {{!-- <a href="/comment/{{post_id}}/{{id}}">{{info}}</a> by {{comment.user.name}}
+            {{comment.info}} --}}
+        {{comment.user.name}}    
+        {{comment.info}}
+  </p>
+{{/each}}
       {{!-- {{#if logged_in}} --}}
       <button
         id="createCommentBtn"

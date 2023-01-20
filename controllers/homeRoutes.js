@@ -37,6 +37,10 @@ router.get('/layout', async (req, res) => {
                 {
                     model:User,
                     attributes: ['name']
+                },
+                {
+                    model:Comment,
+                    attributes: ['info']
                 }
             ]
         })
@@ -60,6 +64,14 @@ router.get('/posts/:id', async (req, res) => {
                 {
                     model: User,
                     attributes: ['name']
+                },
+                {
+                    model: Comment,
+                    attributes: ['info'],
+                    include: {
+                        model: User,
+                        attributes: ['name']
+                    }
                 }
             ]
         });
