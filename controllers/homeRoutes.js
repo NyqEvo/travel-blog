@@ -53,7 +53,7 @@ router.get('/layout', async (req, res) => {
 });
 
 //Render posts by given id
-router.get('/post/:id', async (req, res) => {
+router.get('/posts/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             include: [
@@ -65,8 +65,8 @@ router.get('/post/:id', async (req, res) => {
         });
 
         const post = postData.get({ plain: true })
-
-        res.render('displaypost', {
+        console.log('posts:', post)
+        res.render('posts', {
             post,
             logged_in: req.session.logged_in
         })
