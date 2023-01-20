@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Post, User, Comment, Tag, PostTags } = require('../models');
 const withAuth = require('../utils/auth');
+const cloudinary = require("cloudinary").v2
+const fse = require("fs-extra")
 
 //const Calendar = require("calendar");
 //Calendar = require("calendar").Calendar;
@@ -123,5 +125,27 @@ router.get('/signup', (req, res) => {
 //     res.status(500).json(err);
 //   }
 // });
+
+router.get("/get-signature", (req, res) => {
+    const timestamp = Math.round(new Date().getTime() / 1000)
+    const signature = cloudinary.utils.api_sign_request(
+      {
+        timestamp: timestamp
+      },
+      cloudinaryConfig.api_secret
+    )
+    res.json({ timestamp, signature })
+  });
+
+ router.post("/do-something-with-photo", async (req, res) => {
+    const expectedSignature = cloudinary.utils.api_sign_request({ public_id: req.body.public_id, version: req.body.version }, cloudinaryConfig.api_secret)
+  
+    if (expectedSignature === req.body.signature) {
+      await fse.ensureFile("./data.txt")
+      const existingData = await fse.readFile("./data.txt", "utf8")
+      await fse.outputFile("./data.txt", existingData + req.body.public_id + "\n")
+    }
+  });  
+
 
 module.exports = router;

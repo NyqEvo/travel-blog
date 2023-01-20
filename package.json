@@ -27,7 +27,10 @@
     "mysql2": "^3.0.1",
     "passport": "^0.6.0",
     "passport-google-oidc": "^0.1.0",
-    "sequelize": "^6.28.0"
+    "sequelize": "^6.28.0",
+    "cloudinary": "^1.30.0",
+    "fs-extra": "^10.1.0",
+    "nodemon": "^2.0.16"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
