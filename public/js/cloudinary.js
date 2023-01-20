@@ -27,8 +27,15 @@ document.querySelector("#upload-form").addEventListener("submit", async function
   const photoData = {
     public_id: cloudinaryResponse.data.public_id,
     version: cloudinaryResponse.data.version,
-    signature: cloudinaryResponse.data.signature
+    signature: cloudinaryResponse.data.signature,
+    // TODO MAKE SURE THIS ACTUALLY IS GRABBING THE ID FROM THE WEB URL
+    post_id: document.getElementById('post_id').textContent
   }
+  console.log(photoData.post_id);
+  let $newImage = `<img src="${photoData.public_id}" alt="bobloblaw" />`;
+  document.getElementById('photo-dump').innerHTML = $newImage;
 
-  axios.post("/do-something-with-photo", photoData)
+  axios.put("/api/add-cloudinary", photoData).then(data => {
+    window.location.reload();
+  })
 })

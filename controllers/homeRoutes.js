@@ -88,6 +88,7 @@ router.get('/posts/:id', async (req, res) => {
         console.log('posts:', post)
         res.render('posts', {
             post,
+            // make sure to include the photo data in this object so handlebars can loop thru it or whatever
             logged_in: req.session.logged_in
         })
     } catch (err) {
@@ -144,12 +145,15 @@ router.get("/get-signature", (req, res) => {
   });
 
  router.post("/do-something-with-photo", async (req, res) => {
+    const success = await fetch('/api/cloudinary/public-id')
     const expectedSignature = cloudinary.utils.api_sign_request({ public_id: req.body.public_id, version: req.body.version }, cloudinaryConfig.api_secret)
-  
+    
     if (expectedSignature === req.body.signature) {
-      await fse.ensureFile("./data.txt")
-      const existingData = await fse.readFile("./data.txt", "utf8")
-      await fse.outputFile("./data.txt", existingData + req.body.public_id + "\n")
+        console.log('req.body =', req.body)
+        console.log('req.session =', req.session)
+    //   await fse.ensureFile("./data.txt")
+    //   const existingData = await fse.readFile("./data.txt", "utf8")
+    //   await fse.outputFile("./data.txt", existingData + req.body.public_id + "\n")
     }
   });  
 
