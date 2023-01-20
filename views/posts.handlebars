@@ -1,3 +1,4 @@
+<div id="post_id" style="display: none;"> {{post.id}} </div>
 <div class="container">
   <div class="row">
     <div class="col-sm-2 col-sm border border-primary">Sidebar</div>
@@ -8,7 +9,14 @@
         <div>
           <div class="border border-info">Notes</div>
           <div class="border border-primary">Photos</div>
+          {{!-- duump photos here --}}
+          <div id="photo-dump">
+            {{!-- ADD HANDLEBARS LOOP HERE FOR THE PHOTOS --}}
+          </div>
           {{! Cloudinary }}
+          
+       
+
           <form id="upload-form">
             <input id="file-field" type="file" />
             <button>Upload</button>
