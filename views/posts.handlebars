@@ -9,27 +9,53 @@
           <div class="border border-info">Notes</div>
 
           <div class="border border-primary">Photos</div>
-          {{!-- Cloudinary --}}
-          
-          <form id="upload-form">
-            <input id="file-field" type="file" />
-            <button>Upload</button>
-          </form>
+          {{! Cloudinary }}
         </div>
       </div>
-      <div class="col col-sm border border-danger">Description</div>
-      {{post.description}}
-      <div class="col col-sm border border-success">Posts</div>
+      <div class="col col-sm border border-danger"> {{post.description}} </div>
+
+      <div class="col col-sm border border-success"> </div>
       <div>
-        {{!-- add location --}}
+        {{! add location }}
         {{post.location}}
         {{post.user.name}}
+        {{comment.info}}
+
+        <div class="input-group">
+          <textarea
+          class="form-input"
+          id="comment.info"
+          name="comment.info"
+        ></textarea>
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            id="saveBtn"
+          type="submit"
+          class="btn btn-primary"
+          data-id="{{post_id}}">Tags</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Accommodations</a>
+              <a class="dropdown-item" href="#">Food/Drink</a>
+              <a class="dropdown-item" href="#">Entertainment</a>
+              <a class="dropdown-item" href="#">Transportation</a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      {{!-- {{#if logged_in}} --}}
-      <button id="createCommentBtn" class="btn btn-sm btn-primary" data-id="{{id}}">Create Comment</button>
-      {{!-- {{/if}} --}}
-    </div>
+    {{!-- {{#if logged_in}} --}}
+    <button
+          id="createCommentBtn"
+          class="btn btn-sm btn-primary"
+          data-id="{{id}}"
+        >Create Comment</button>
+    {{!-- {{/if}} --}}
+      </div>
   </div>
 </div>
 
