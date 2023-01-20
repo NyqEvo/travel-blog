@@ -1,47 +1,65 @@
-<div class="row">
-  <div class="col-md-6">
+<div class="row row-cols-1">
+  <div class="col p-2 text-center col-md-6">
     <h2>Login</h2>
+    <form class="form login-form text-right">
+      <div class="form-group row">
+        <label for="inputEmail" class="col-md-3 col-form-label">Email</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" id="inputEmail" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputPassword"
+          class="col-md-3 col-form-label"
+        >Password</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" id="inputPassword" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-8">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+  <div class="border border-primary text-center p-2 col-md-6">
+    <h2>Sign Up</h2>
+    <form class="form signup-form text-right">
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" id="inputName" />
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" id="inputEmail" />
+        </div>
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
+      <div class="form-group row">
+        <label
+          for="inputPassword"
+          class="col-sm-3 col-form-label"
+        >Password</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" id="inputPassword" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-8">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
       </div>
     </form>
   </div>
 </div>
 
-
-<div class="col-md-6">
-  <h2>Signup</h2>
-
-  <form class="form signup-form">
-    <div class="form-group">
-      <label for="name-signup">name:</label>
-      <input class="form-input" type="text" id="name-signup" />
-    </div>
-    <div class="form-group">
-      <label for="email-signup">email:</label>
-      <input class="form-input" type="text" id="email-signup" />
-    </div>
-    <div class="form-group">
-      <label for="password-signup">password:</label>
-      <input class="form-input" type="password" id="password-signup" />
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit">signup</button>
-    </div>
-  </form>
-</div>
-
-<a class="button google" href="/login/federated/google">Sign in with Google</a>
+<a class="button google align-item-center" href="/login/federated/google">Sign
+  in with Google</a>
 
 <script src="/js/login.js"></script>
 <script src="../routes/auth.js"></script>
