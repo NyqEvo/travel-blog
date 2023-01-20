@@ -4,7 +4,7 @@ const { Post, User, Comment, Tag, PostTags } = require('../../models');
 router.get('/', async (req, res) => {
 
     try {
-        const commentData = await Comment.findAll()
+        const commentData = await Comment.findAll() 
 
         const comments = commentData.get({ plain: true });
         res.status(200).json(comments)
