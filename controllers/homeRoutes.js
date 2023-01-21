@@ -157,5 +157,15 @@ router.post("/do-something-with-photo", async (req, res) => {
     }
 });
 
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+      res.render('landing');
+    } else {
+      res.status(404).end();
+    }
+  });
 
 module.exports = router;
