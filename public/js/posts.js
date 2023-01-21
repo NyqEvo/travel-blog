@@ -10,6 +10,8 @@ const newComment = async (event) => {
   }
 };
 
+
+
 let btn = document.querySelector("#createCommentBtn");
 if (btn) {
   btn.addEventListener("click", newComment);
