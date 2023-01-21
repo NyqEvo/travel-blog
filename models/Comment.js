@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Tag = require('./Tag');
 const User = require('./User');
 
 class Comment extends Model { }
@@ -27,6 +28,13 @@ Comment.init(
             references: {
                 model: 'user',
                 key: 'id'
+            }
+        },
+        tag_id: {
+            type: DataTypes.STRING,
+            references: {
+                model: Tag,
+                key: 'id',
             }
         }
     },

@@ -12,25 +12,8 @@ Tag.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        foodDrink: {
-            type: DataTypes.BOOLEAN,
-
-        },
-        transportation: {
-            type: DataTypes.BOOLEAN,
-        },
-        entertainment: {
-            type: DataTypes.BOOLEAN,
-        },
-        accommodations: {
-            type: DataTypes.BOOLEAN,
-        },
-        post_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'post',
-                key: 'id'
-            }
+        info: {
+            type: DataTypes.STRING,
         }
     },
     {

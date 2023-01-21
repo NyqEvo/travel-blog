@@ -55,7 +55,7 @@ router.get('/displayposts', async (req, res) => {
 
         const posts = postdata.map((post) => post.get({ plain: true }));
         console.log('posts:', posts)
-        res.render('displaypsots', {
+        res.render('displayposts', {
             posts,
             logged_in: req.session.logged_in
         });
@@ -95,6 +95,14 @@ router.get('/posts/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/createpost', (req,res) => {
+    try {
+        res.render('createpost')
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 // If the user is already logged in, redirect the request to another route
 router.get('/login', (req, res) => {
