@@ -10,13 +10,12 @@
           <div class="border border-info">Notes</div>
 
           <div class="border border-primary">Photos</div>
-          {{!-- duump photos here --}}
           <div id="photo-dump">
             <img src={{post.img}} alt="place holder">
           </div>
           {{! Cloudinary }}
-          
-       
+
+
 
           <form id="upload-form">
             <input id="file-field" type="file" />
@@ -51,33 +50,25 @@
 
       </div>
 
-    {{!-- {{#if logged_in}} --}}
-    <button
-          id="createCommentBtn"
-          class="btn btn-sm btn-primary"
-          data-id="{{id}}"
-        >Create Comment</button>
-    {{!-- {{/if}} --}}
-      </div>
-
- {{#each post.comments as |comment|}}
-       <p>
-  
-    {{!-- <a href="/comment/{{post_id}}/{{id}}">{{info}}</a> by {{comment.user.name}}
-            {{comment.info}} --}}
-        {{comment.user.name}}    
-        {{comment.info}}
-  </p>
-{{/each}}
       {{!-- {{#if logged_in}} --}}
-      <button
-        id="createCommentBtn"
-        class="btn btn-sm btn-primary"
-        data-id="{{id}}"
-      >Comment</button>
+      <button id="createCommentBtn" class="btn btn-sm btn-primary" data-id="{{id}}">Create Comment</button>
       {{!-- {{/if}} --}}
     </div>
+
+    {{#each post.comments as |comment|}}
+    <p>
+
+      {{!-- <a href="/comment/{{post_id}}/{{id}}">{{info}}</a> by {{comment.user.name}}
+      {{comment.info}} --}}
+      {{comment.user.name}}
+      {{comment.info}}
+    </p>
+    {{/each}}
+    {{!-- {{#if logged_in}} --}}
+    <button id="createCommentBtn" class="btn btn-sm btn-primary" data-id="{{id}}">Comment</button>
+    {{!-- {{/if}} --}}
   </div>
+</div>
 </div>
 
 <script src="/js/comments.js"></script>

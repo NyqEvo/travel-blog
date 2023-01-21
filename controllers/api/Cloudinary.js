@@ -4,9 +4,8 @@ const { Post, User, Comment, Tag, PostTags } = require('../../models');
 router.put('/', async (req, res) => {
     console.log(req.body)
     try {
-       
+
         const updatedPost = await Post.update({
-            // TODO CORRECT THE URL HERE
             img: `https://res.cloudinary.com/du4klwka8/image/upload/v1674244470/${req.body.public_id}`
         }, {
             where: {
@@ -14,7 +13,7 @@ router.put('/', async (req, res) => {
             },
             returning: true
         });
-        
+
         res.status(200).json(updatedPost)
     } catch (err) {
         res.status(500).json(err)
