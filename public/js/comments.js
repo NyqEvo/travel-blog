@@ -2,17 +2,31 @@ const newComment = async (event) => {
   event.preventDefault();
 
   const btn = document.querySelector("#createCommentBtn");
-  if (btn.hasAttribute("data-id")) {
-    const post_id = btn.getAttribute("data-id");
-    document.location.replace("/comment/" + post_id + "/new");
+  const info = document.querySelector("#location").value.trim();
+  const tag = document.querySelector("#description").value.trim();
+  const post_id = btn.getAttribute('data-id');
+
+  if (btn.hasAttribute("#createCommentBtn")) {
+    const response = await fetch(`/api/comment`, {
+      method: 'POST',
+      body: JSON.stringify({ info, tag, post_id }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if(response.ok) {
+      document.location.reload()
+    } else {
+      alert("Create Comment has failed");
+    }
   } else {
-    alert("Create Comment button missing Post ID");
+    alert('Button cannot be found')
   }
 };
 
 
 
-let btn = document.querySelector("#createCommentBtn");
-if (btn) {
-  btn.addEventListener("click", newComment);
-}
+document
+.querySelector("#createCommentBtn")
+.addEventListener("click", newComment);

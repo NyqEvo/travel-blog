@@ -2,31 +2,37 @@
     {
         "info": "Really enjoyed our trip but travel time was a pain! Make sure you leave very early if you are traveling during rush hours and check the status of the subway if you are relying on that!",
         "post_id": 1,
-        "user_id": 1
+        "user_id": 1,
+        "tag_id": 2
     },
     {
         "info": "This is filler for post number two",
         "post_id": 2,
-        "user_id": 2
+        "user_id": 2,
+        "tag_id": 2
     },
     {
         "info": "Even more filler, but this time for post number three",
         "post_id": 3,
-        "user_id": 2
+        "user_id": 2,
+        "tag_id": 1
     },
     {
         "info": "Really enjoyed our trip but travel time was a pain! ",
         "post_id": 2,
-        "user_id": 3
+        "user_id": 3,
+        "tag_id": 1
     },
     {
         "info": "This is filler for post number three",
         "post_id": 3,
-        "user_id": 1
+        "user_id": 1,
+        "tag_id": 1
     },
     {
         "info": "Even more filler, but this time for post number one",
         "post_id": 1,
-        "user_id": 1
+        "user_id": 1,
+        "tag_id": 3
     }
 ]

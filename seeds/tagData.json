@@ -1,14 +1,11 @@
 [
     {
-        "foodDrink": true,
-        "post_id": 1
+        "info": "food and drink"
     },
     {
-        "transportaion": true,
-        "post_id": 2
+        "transportaion": "entertainment"
     },
     {
-        "entertainment": true,
-        "post_id": 3
+        "entertainment": "travel expenses"
     }
 ]

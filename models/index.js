@@ -5,9 +5,9 @@ const User = require('./User');
 const PostTags = require('./postTags');
 
 
-Post.hasOne(Tag, {through: PostTags});
+Tag.belongsToMany(Comment, {through: PostTags});
 
-Tag.belongsTo(Post, {through: PostTags});
+Comment.belongsTo(Tag, {through: PostTags});
 
 Post.hasMany(Comment, {
     foreignKey: 'post_id'
