@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment, Tag, PostTags } = require('../../models');
+
 // this is alreayd /api/user/
 router.get('/', async (req, res) => {
     console.log('for insomnia testing')
