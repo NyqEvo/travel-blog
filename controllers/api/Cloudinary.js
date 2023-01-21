@@ -7,7 +7,7 @@ router.put('/', async (req, res) => {
        
         const updatedPost = await Post.update({
             // TODO CORRECT THE URL HERE
-            img: `http://www.cloudinary.com/public/${req.body.public_id}`
+            img: `https://res.cloudinary.com/du4klwka8/image/upload/v1674244470/${req.body.public_id}`
         }, {
             where: {
                 id: req.body.post_id
