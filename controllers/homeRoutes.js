@@ -99,7 +99,7 @@ router.get('/posts/:id', async (req, res) => {
 // If the user is already logged in, redirect the request to another route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/layout');
+        res.redirect('/posts');
         return;
     }
 
@@ -162,7 +162,7 @@ router.post('/logout', (req, res) => {
       req.session.destroy(() => {
         res.status(204).end();
       });
-      res.render('landing');
+      res.redirect('landing');
     } else {
       res.status(404).end();
     }
