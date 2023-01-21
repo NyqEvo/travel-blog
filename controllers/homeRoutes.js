@@ -11,7 +11,7 @@ const cloudinaryConfig = cloudinary.config({
     api_key: process.env.CLOUDAPIKEY,
     api_secret: process.env.CLOUDINARYSECRET,
     secure: true
-  })
+})
 
 //render homepage
 router.get('/', async (req, res) => {
@@ -28,10 +28,10 @@ router.get('/', async (req, res) => {
         // const posts = postdata.map((post) => post.get({ plain: true }));
 
         res.render('landing')
-// , {
-//             ...posts,
-//             logged_in: req.session.logged_in
-//         });
+        // , {
+        //             ...posts,
+        //             logged_in: req.session.logged_in
+        //         });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -43,11 +43,11 @@ router.get('/layout', async (req, res) => {
         const postdata = await Post.findAll({
             include: [
                 {
-                    model:User,
+                    model: User,
                     attributes: ['name']
                 },
                 {
-                    model:Comment,
+                    model: Comment,
                     attributes: ['info']
                 }
             ]
@@ -136,26 +136,36 @@ router.get('/signup', (req, res) => {
 router.get("/get-signature", (req, res) => {
     const timestamp = Math.round(new Date().getTime() / 1000)
     const signature = cloudinary.utils.api_sign_request(
-      {
-        timestamp: timestamp
-      },
-      cloudinaryConfig.api_secret
+        {
+            timestamp: timestamp
+        },
+        cloudinaryConfig.api_secret
     )
     res.json({ timestamp, signature })
-  });
+});
 
- router.post("/do-something-with-photo", async (req, res) => {
+router.post("/do-something-with-photo", async (req, res) => {
     const success = await fetch('/api/cloudinary/public-id')
     const expectedSignature = cloudinary.utils.api_sign_request({ public_id: req.body.public_id, version: req.body.version }, cloudinaryConfig.api_secret)
-    
+
     if (expectedSignature === req.body.signature) {
         console.log('req.body =', req.body)
         console.log('req.session =', req.session)
-    //   await fse.ensureFile("./data.txt")
-    //   const existingData = await fse.readFile("./data.txt", "utf8")
-    //   await fse.outputFile("./data.txt", existingData + req.body.public_id + "\n")
+        //   await fse.ensureFile("./data.txt")
+        //   const existingData = await fse.readFile("./data.txt", "utf8")
+        //   await fse.outputFile("./data.txt", existingData + req.body.public_id + "\n")
     }
-  });  
+});
 
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+      res.render('landing');
+    } else {
+      res.status(404).end();
+    }
+  });
 
 module.exports = router;
