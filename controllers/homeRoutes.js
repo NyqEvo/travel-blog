@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 }
 );
 
-router.get('/layout', async (req, res) => {
+router.get('/displayposts', async (req, res) => {
     try {
         const postdata = await Post.findAll({
             include: [
@@ -55,7 +55,7 @@ router.get('/layout', async (req, res) => {
 
         const posts = postdata.map((post) => post.get({ plain: true }));
         console.log('posts:', posts)
-        res.render('layout', {
+        res.render('displaypsots', {
             posts,
             logged_in: req.session.logged_in
         });
