@@ -3,8 +3,8 @@
 
 {{#each posts as |post|}}
      <div class="row">
-      <div class="col row-cols-2 row-cols-md-2 g-4 displayPostBtn">
-        <div class="card" data-id="{{post.id}}">
+      <div class="col row-cols-2 row-cols-md-2 g-4 displayPostBtn" data-id="{{post.id}}">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{post.location}}</h5>
             <p class="card-text">
@@ -22,7 +22,3 @@
 </section>
 
 <script src="/js/displayposts.js"></script>
-{{!else}}
-<!--a href="/login">You must login first to view this page</a>
-{{!/if}}
-

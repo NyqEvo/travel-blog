@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 
 router.get('/displayposts', async (req, res) => {
     try {
-        const postdata = await Post.findAll({
+        const postdata = await Post.findAndCountAll({
             include: [
                 {
                     model: User,
@@ -49,6 +49,13 @@ router.get('/displayposts', async (req, res) => {
     }
 });
 
+router.get('/createpost', async (req, res) => {
+    try {
+        res.render('createpost')
+    } catch (err) {
+        res.status(500).json(err)
+    }
+});
 //Render posts by given id
 router.get('/posts/:id', async (req, res) => {
     try {
@@ -81,13 +88,14 @@ router.get('/posts/:id', async (req, res) => {
     }
 });
 
-router.get('/createpost', (req,res) => {
+router.post('/createpost', async (req, res) => {
     try {
-        res.render('createpost')
+        const newUser = await Post.create(req.body)
+        res.status(200).json(newUser);
     } catch (err) {
-        res.status(500).json(err)
+        res.status(400).json(err);
     }
-})
+});
 
 // If the user is already logged in, redirect the request to another route
 router.get('/login', (req, res) => {
