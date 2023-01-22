@@ -4,11 +4,15 @@
         "post_id": 1
     },
     {
-        "transportaion": true,
+        "transportation": true,
         "post_id": 2
     },
     {
         "entertainment": true,
         "post_id": 3
+    },
+    {
+        "accommodation": true,
+        "post_id": 4
     }
 ]

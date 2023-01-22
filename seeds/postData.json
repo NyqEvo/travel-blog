@@ -1,19 +1,19 @@
 [
     {
-        "img": "#",
+        "img": "nyc.jpg",
         "location": "New York",
         "user_id": 1,
         "description": "filler"
     },
     {
-        "img": "#",
+        "img": "london.jpg",
         "location": "London",
         "user_id": 2,
         "description": "filler"
     },
     {
-        "img":"#",
-        "location": "Tokyo",
+        "img":"paris.jpg",
+        "location": "Paris",
         "user_id": 3,
         "description": "filler"
     }
