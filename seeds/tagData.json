@@ -3,9 +3,16 @@
         "info": "food and drink"
     },
     {
-        "transportaion": "entertainment"
+
+        "info": "transportation",
+        "post_id": 2
     },
     {
-        "entertainment": "travel expenses"
+        "info": entertainment,
+        "post_id": 3
+    },
+    {
+        "info": accommodation,
+        "post_id": 4
     }
 ]

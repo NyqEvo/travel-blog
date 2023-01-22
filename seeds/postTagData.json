@@ -10,5 +10,9 @@
     {
         "comment_id": 3,
         "tag_id": 3
+    },
+    {
+        "post_id": 4,
+        "tag_id": 4
     }
 ]
