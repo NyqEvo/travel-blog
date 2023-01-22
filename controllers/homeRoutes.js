@@ -16,22 +16,7 @@ const cloudinaryConfig = cloudinary.config({
 //render homepage
 router.get('/', async (req, res) => {
     try {
-        // const postdata = await Post.findAll({
-        //     include: [
-        //         {
-        //             model:User,
-        //             attributes: ['name']
-        //         }
-        //     ]
-        // })
-
-        // const posts = postdata.map((post) => post.get({ plain: true }));
-
         res.render('landing')
-        // , {
-        //             ...posts,
-        //             logged_in: req.session.logged_in
-        //         });
     } catch (err) {
         res.status(500).json(err);
     }
