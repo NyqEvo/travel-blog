@@ -7,10 +7,7 @@ router.get('/', async (req, res) => {
         const postData = await Post.findAll({
             include: [
                 {
-                    model: Tag, through: PostTags,
-                },
-                {
-                    model: Comment, 
+                    model: Comment,
                 }
             ]
         })
@@ -28,9 +25,6 @@ router.get('/:id', async (req, res) => {
         const postData = await Post.findByPk(req.params.id, {
             include: [
                 {
-                    model: Tag,
-                },
-                {
                     model: Comment,
                 }
             ]
@@ -40,6 +34,18 @@ router.get('/:id', async (req, res) => {
         res.status(200).json(posts)
     } catch (err) {
         res.status(500).json(err)
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const postData = await Post.create({
+        ...req.body,
+        user_id: req.session.user_id
+    });
+    res.status(200).json(postData);
+    } catch (err) {
+        res.status(400).json(err);
     }
 });
 

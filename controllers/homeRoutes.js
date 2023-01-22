@@ -96,6 +96,14 @@ router.get('/posts/:id', async (req, res) => {
     }
 });
 
+router.get('/createpost', (req,res) => {
+    try {
+        res.render('createpost')
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 // If the user is already logged in, redirect the request to another route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {

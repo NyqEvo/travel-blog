@@ -1,18 +1,18 @@
 [
     {
-        "foodDrink": true,
-        "post_id": 1
+        "info": "food and drink"
     },
     {
-        "transportation": true,
+
+        "info": "transportation",
         "post_id": 2
     },
     {
-        "entertainment": true,
+        "info": entertainment,
         "post_id": 3
     },
     {
-        "accommodation": true,
+        "info": accommodation,
         "post_id": 4
     }
 ]
