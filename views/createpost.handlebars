@@ -8,12 +8,14 @@
   <br>
   <div class="form-group row m-2">
     <legend for="Description" class="col-sm-2 col-form-label">Description</legend>
-    <textarea type="text" class="form-control col-sm-9" id="formDescription" cols="30" rows="10" placeholder="Describe your Vacation Plans"></textarea>
+    <textarea type="text" class="form-control col-sm-9" id="description" cols="30" rows="10" placeholder="Describe your Vacation Plans"></textarea>
   </div>
   <div class="form-group row m-5 justify-content-center">
     <div class="col-sm-9">
-      <button type="submit" class="btn btn-primary ">Post</button>
+      <button type="submit" class="btn btn-primary " id="createPostBtn" data-id="{{post.id}}">Post</button>
     </div>
   </div>
 </form>
 </section>
+
+<script src="/js/createpost.js"></script>
