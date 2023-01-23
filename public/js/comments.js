@@ -22,8 +22,6 @@ const newComment = async (event) => {
   }
 };
 
-
-
 document
   .querySelector("#createCommentBtn")
   .addEventListener("click", newComment);

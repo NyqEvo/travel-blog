@@ -5,9 +5,6 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
-
-
-
 //var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var passport = require("passport");
@@ -15,7 +12,6 @@ var SQLiteStore = require("connect-sqlite3")(session);
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -33,9 +29,6 @@ const sess = {
   },
   resave: false,
   saveUninitialized: true,
-  // store: new SequelizeStore({
-  //   db: sequelize
-  // })
 };
 
 app.use(session(sess));

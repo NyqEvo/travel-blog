@@ -1,23 +1,24 @@
-<section class="container">
-{{!#if loggedIn}}
-{{#each posts as |post|}}
-     <div class="row">
-      <div class="col row-cols-2 row-cols-md-2 g-4 displayPostBtn" data-id="{{post.id}}">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{post.location}}</h5>
-            <p class="card-text">
-              <img
-              src="/images/{{post.img}}"
-              class="img-thumbnail"
-              alt="place holder"
-            />
-            </p>
-          </div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+
+  {{#each posts as |post|}}
+
+    <div class="col">
+
+      <div class="card displayPostBtn" data-id="{{post.id}}">
+        <img
+          src="/images/{{post.img}}"
+          class="card-img-top img-fluid img-thumbnail"
+          style="height: 500px"
+          alt="{{post.location}}"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title">{{post.location}}</h5>
+
         </div>
       </div>
+
     </div>
-    {{/each}}
-</section>
+  {{/each}}
+</div>
 
 <script src="/js/displayposts.js"></script>

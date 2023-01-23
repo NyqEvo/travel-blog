@@ -5,16 +5,6 @@ const goToPost = async (event) => {
   document.location.replace("/post/" + post_id);
 };
 
-
-
 document
 .querySelector(".displayPost")
 .addEventListener("click", goToPost);
-
-/*
-document.querySelector("#logoutBtn").addEventListener("click", function(){
-  fetch('/logout', {
-    method: 'POST'
-  })
-});
-*/

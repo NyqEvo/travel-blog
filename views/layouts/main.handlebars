@@ -12,22 +12,40 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <!--link rel="stylesheet" href="/style.css"-->
 
   </head>
   <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-sm-2 col-sm border ms-2 pt-4 text-center bg-primary" style="--bs-text-opacity: .5;"
+        >
+          {{#if logged_in}}
+            <a
+              href="/logout"
+              role="button"
+              class="btn btn-light btn-block btn-rounded align-items-end"
+              aria-pressed="true"
+            >Log Out</a>
+          {{else}}
+            <a
+              href="/login"
+              role="button"
+              class="btn btn-light btn-block btn-rounded align-items-end"
+              aria-pressed="true"
+            >Log In <br />Sign Up</a>
+          {{/if}}
+        </div>
 
-    {{{body}}}
+        <div class="col">
+          {{{body}}}
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     ></script>
-    <!--script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
-    ></script-->
-    <!--script
-      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-    ></script-->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
     ></script>

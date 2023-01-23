@@ -6,10 +6,8 @@ const newComment = async (event) => {
   console.log(btn);
   console.log(post_id);
 
-  document.location.replace('/posts/' + post_id)
+  document.location.assign('/posts/' + post_id)
 };
-
-
 
 document
 .querySelector(".displayPostBtn")

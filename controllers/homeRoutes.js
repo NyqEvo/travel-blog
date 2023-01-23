@@ -4,8 +4,6 @@ const withAuth = require('../utils/auth');
 const cloudinary = require("cloudinary").v2
 const fse = require("fs-extra")
 
-//const Calendar = require("calendar");
-//Calendar = require("calendar").Calendar;
 const cloudinaryConfig = cloudinary.config({
     cloud_name: process.env.CLOUDNAME,
     api_key: process.env.CLOUDAPIKEY,
@@ -83,7 +81,6 @@ router.get('/posts/:id', async (req, res) => {
         console.log('posts:', post)
         res.render('posts', {
             post,
-            // make sure to include the photo data in this object so handlebars can loop thru it or whatever
             logged_in: req.session.logged_in
         })
     } catch (err) {
