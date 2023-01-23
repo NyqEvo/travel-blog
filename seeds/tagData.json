@@ -8,11 +8,11 @@
         "post_id": 2
     },
     {
-        "info": entertainment,
+        "info": "entertainment",
         "post_id": 3
     },
     {
-        "info": accommodation,
+        "info": "accommodation",
         "post_id": 4
     }
 ]

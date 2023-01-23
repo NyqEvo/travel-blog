@@ -16,7 +16,9 @@ const cloudinaryConfig = cloudinary.config({
 //render homepage
 router.get('/', async (req, res) => {
     try {
-        res.render('landing')
+        res.render('landing', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -25,7 +27,8 @@ router.get('/', async (req, res) => {
 
 router.get('/displayposts', async (req, res) => {
     try {
-        const postdata = await Post.findAndCountAll({
+        req.session.logged_in = true;   // ugly hack
+        const postdata = await Post.findAll({
             include: [
                 {
                     model: User,
@@ -118,22 +121,6 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-// router.get("/calendar/:year/:month", async (req, res) => {
-//   try {
-//     cal = new Calendar();
-//     if (req.params.year && req.params.month) {
-//         days = cal.monthDays(parseInt(req.params.year), parseInt(req.params.month));
-
-//         console.log(days);
-//     }
-
-//     res.send("<pre>" + days + "</pre>");
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get("/get-signature", (req, res) => {
     const timestamp = Math.round(new Date().getTime() / 1000)
     const signature = cloudinary.utils.api_sign_request(
@@ -158,12 +145,12 @@ router.post("/do-something-with-photo", async (req, res) => {
     }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if (req.session.logged_in) {
       req.session.destroy(() => {
         res.status(204).end();
       });
-      res.redirect('landing');
+      res.redirect('/');
     } else {
       res.status(404).end();
     }

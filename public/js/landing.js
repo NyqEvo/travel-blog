@@ -10,3 +10,11 @@ const goToPost = async (event) => {
 document
 .querySelector(".displayPost")
 .addEventListener("click", goToPost);
+
+/*
+document.querySelector("#logoutBtn").addEventListener("click", function(){
+  fetch('/logout', {
+    method: 'POST'
+  })
+});
+*/
