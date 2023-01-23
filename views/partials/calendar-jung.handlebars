@@ -1,11 +1,4 @@
-<label for="Year">Year:</label>
-
-<select name="Year" id="year">
-  <option value="2023">2023</option>
-  <option value="2024">2024</option>
-  <option value="2025">2025</option>
-</select>
-
+<!-- Select for month and year on calendar -->
 <label for="Month">Month:</label>
 
 <select name="Month" id="month">
@@ -24,8 +17,18 @@
 
 </select>
 
-<table
-  class="table-responsive table-bordered border-primary table-sm align-middle text-center col-auto"
+<label for="Year">Year:</label>
+
+<select name="Year" id="year">
+  <option value="2023">2023</option>
+  <option value="2024">2024</option>
+  <option value="2025">2025</option>
+</select>
+
+<!-- Calendar -->
+<div class="table-responsive border-primary">
+  <table
+  class="table table-bordered  table-sm align-middle text-center col-auto"
 >
   <thead>
     <tr>
@@ -42,6 +45,7 @@
 
   </tbody>
 </table>
+</div>
 
 <!-- Modal -->
 <div

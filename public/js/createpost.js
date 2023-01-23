@@ -18,8 +18,6 @@ const newPost = async (event) => {
   }
 };
 
-
-
 document
   .querySelector("#createPostBtn")
   .addEventListener("click", newPost);

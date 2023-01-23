@@ -1,83 +1,77 @@
-<div class="container">
+<div class="col col-md">
   <div class="row">
-    <div
-      class="col-sm-2 col-sm border ms-2 pt-4 text-center bg-secondary border-danger"
-    >
-      sidebar
+    <div class="col-lg-6">{{> calendar-jung}}</div>
+    <div class="col-lg-6">Notes
+      <div id="photo-dump">Photos
+        <img
+          src="/images/{{post.img}}"
+          class="img-thumbnail"
+          alt="place holder"
+        />
+
+        {{! Cloudinary }}
+
+        <form id="upload-form">
+          <input id="file-field" type="file" />
+          <button>Upload</button>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <div class="col col-sm-10 border border-danger">
-      <div class="row">
-        <div class="col-sm-6 border border-success">{{> calendar-jung}}</div>
-        <div class="col-sm-6 border border-info">Notes
-          <div class="border border-primary" id="photo-dump">Photos
-            <img
-              src="/images/{{post.img}}"
-              class="img-thumbnail"
-              alt="place holder"
-            />
-
-            {{! Cloudinary }}
-
-            <form id="upload-form">
-              <input id="file-field" type="file" />
-              <button>Upload</button>
-            </form>
+  <div>
+    <div>
+      <div class="col col-md">
+        <p>{{post.location}}: {{post.user.name}}</p>
+        <p>{{post.description}}</p>
+      </div>
+      <div class="col col-md">
+        {{#each post.comments as |comment|}}
+         <p>{{comment.user.name}}: {{comment.info}}</p>
+        {{/each}}
+        <div class="input-group">
+          <textarea
+            class="form-control"
+            id="info"
+            rows="2"
+            name="comment.info"
+          ></textarea>
+          <div class="dropdown">
+            <button
+              class="btn btn-danger dropdown-toggle"
+              type="button"
+              id="dropdownMenu2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Tags
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button
+                  class="dropdown-item"
+                  type="button"
+                >Accommodations</button></li>
+              <li><button
+                  class="dropdown-item"
+                  type="button"
+                >Food/Drink</button></li>
+              <li><button
+                  class="dropdown-item"
+                  type="button"
+                >Transportation</button></li>
+              <li><button
+                  class="dropdown-item"
+                  type="button"
+                >Entertainment</button></li>
+            </ul>
           </div>
         </div>
-      </div>
-
-      <div>
         <div>
-          <div class="col col-sm border border-danger">
-            <p>{{post.location}}: {{post.user.name}}</p>
-            <p>{{post.description}}</p>
-          </div>
-          <div class="col col-sm border border-success">
-
-            {{!-- {{comment.info}} --}}
-            {{#each post.comments as |comment|}}
-              {{!-- <a href="/comment/{{post_id}}/{{id}}">{{info}}</a> by {{comment.user.name}}
-                    {{comment.info}} --}}
-              <p>{{comment.user.name}}: {{comment.info}}</p>
-            {{/each}}
-            <div class="input-group">
-              <textarea
-                class="form-control"
-                id="info"
-                rows="2"
-                name="comment.info"
-              ></textarea>
-              <div class="input-group-append">
-                <button
-                  class="btn btn-outline-secondary dropdown-toggle"
-                  type="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
-                  id="tag"
-                  type="submit"
-                  class="btn btn-primary"
-                  data-id="{{post_id}}"
-                >Tags</button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Accommodations</a>
-                  <a class="dropdown-item" href="#">Food/Drink</a>
-                  <a class="dropdown-item" href="#">Entertainment</a>
-                  <a class="dropdown-item" href="#">Transportation</a>
-                </div>
-              </div>
-              </div>
-              <div>
-                {{!-- {{#if logged_in}} --}}
-                <button
-                  id="createCommentBtn"
-                  class="btn btn-sm btn-primary"
-                  data-id="{{post.id}}"
-                >Comment</button>
-                {{!-- {{/if}} --}}
-              </div>
-            
-          </div>
+          <button
+            id="createCommentBtn"
+            class="btn btn-sm btn-primary"
+            data-id="{{post.id}}"
+          >Comment</button>
         </div>
       </div>
     </div>

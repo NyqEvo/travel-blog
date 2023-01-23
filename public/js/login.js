@@ -20,8 +20,6 @@ const loginFormHandler = async (event) => {
   };
 };
 
-
-
 const signupFormHandler = async (event) => {
   event.preventDefault();
   const name = document.querySelector('#name-signup').value.trim();
@@ -46,7 +44,6 @@ const signupFormHandler = async (event) => {
 document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
-
 
 document
   .querySelector('.login-form')
