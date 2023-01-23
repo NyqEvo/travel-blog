@@ -4,13 +4,23 @@
       class="col-sm-2 col-sm border ms-2 pt-4 text-center bg-secondary border-danger"
     >
       sidebar
+
+      {{#if logged_in}}
+       <!--button id="logoutBtn" class="btn btn-primary">Logout</button-->
+             <a
+        href="/logout"
+        role="button"
+        class="btn btn-primary btn-block btn-rounded align-items-end"
+        aria-pressed="true"
+      >Log Out</a>
+      {{else}}
       <a
         href="/login"
         role="button"
         class="btn btn-primary btn-block btn-rounded align-items-end"
         aria-pressed="true"
       >Login <br />Sign Up</a>
-
+       {{/if}}
     </div>
 
     <div class="col-sm-10 col-sm p-0">
@@ -88,7 +98,7 @@
   </div>
 </div>
 
-{{#if logged_in}}
-  <script src="../utils/logout.js"></script>
-{{/if}}
-<script src="../public/js/landing.js"></script>
+
+ 
+
+<script src="/js/landing.js"></script>
