@@ -1,13 +1,10 @@
+<div id="post_id" style="display: none;"> {{post.id}} </div>
 <div class="col col-md">
   <div class="row">
     <div class="col-lg-6">{{> calendar-jung}}</div>
     <div class="col-lg-6">Notes
       <div id="photo-dump">Photos
-        <img
-          src="/images/{{post.img}}"
-          class="img-thumbnail"
-          alt="place holder"
-        />
+        <img src="{{post.img}}" class="img-thumbnail" alt="place holder" />
 
         {{! Cloudinary }}
 
@@ -27,51 +24,25 @@
       </div>
       <div class="col col-md">
         {{#each post.comments as |comment|}}
-         <p>{{comment.user.name}}: {{comment.info}}</p>
+        <p>{{comment.user.name}}: {{comment.info}}</p>
         {{/each}}
         <div class="input-group">
-          <textarea
-            class="form-control"
-            id="info"
-            rows="2"
-            name="comment.info"
-          ></textarea>
+          <textarea class="form-control" id="info" rows="2" name="comment.info"></textarea>
           <div class="dropdown">
-            <button
-              class="btn btn-danger dropdown-toggle"
-              type="button"
-              id="dropdownMenu2"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Tags
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><button
-                  class="dropdown-item"
-                  type="button"
-                >Accommodations</button></li>
-              <li><button
-                  class="dropdown-item"
-                  type="button"
-                >Food/Drink</button></li>
-              <li><button
-                  class="dropdown-item"
-                  type="button"
-                >Transportation</button></li>
-              <li><button
-                  class="dropdown-item"
-                  type="button"
-                >Entertainment</button></li>
+              <li><button class="dropdown-item" type="button">Accommodations</button></li>
+              <li><button class="dropdown-item" type="button">Food/Drink</button></li>
+              <li><button class="dropdown-item" type="button">Transportation</button></li>
+              <li><button class="dropdown-item" type="button">Entertainment</button></li>
             </ul>
           </div>
         </div>
         <div>
-          <button
-            id="createCommentBtn"
-            class="btn btn-sm btn-primary"
-            data-id="{{post.id}}"
-          >Comment</button>
+          <button id="createCommentBtn" class="btn btn-sm btn-primary" data-id="{{post.id}}">Comment</button>
         </div>
       </div>
     </div>
@@ -79,3 +50,5 @@
 </div>
 
 <script src="/js/comments.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/cloudinary.js"></script>
