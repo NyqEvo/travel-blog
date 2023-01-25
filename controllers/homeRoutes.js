@@ -12,6 +12,7 @@ const cloudinaryConfig = cloudinary.config({
 })
 
 //render homepage
+//3001/landing
 router.get('/', async (req, res) => {
     try {
         res.render('landing', {
@@ -23,20 +24,21 @@ router.get('/', async (req, res) => {
 }
 );
 
+//3001/displayposts
 router.get('/displayposts', async (req, res) => {
     try {
         req.session.logged_in = true;   // ugly hack
         const postdata = await Post.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['name']
-                },
-                {
-                    model: Comment,
-                    attributes: ['info']
-                }
-            ]
+            // include: [
+            //     {
+            //         model: User,
+            //         attributes: ['name']
+            //     },
+            //     {
+            //         model: Comment,
+            //         attributes: ['info']
+            //     }
+            // ]
         })
 
         const posts = postdata.map((post) => post.get({ plain: true }));
@@ -50,6 +52,7 @@ router.get('/displayposts', async (req, res) => {
     }
 });
 
+//3001/createpost
 router.get('/createpost', async (req, res) => {
     try {
         res.render('createpost')
@@ -58,6 +61,7 @@ router.get('/createpost', async (req, res) => {
     }
 });
 //Render posts by given id
+//3001/posts/#
 router.get('/posts/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -88,6 +92,7 @@ router.get('/posts/:id', async (req, res) => {
     }
 });
 
+//3001/createpost
 router.post('/createpost', async (req, res) => {
     try {
         const newUser = await Post.create(req.body)
@@ -98,6 +103,7 @@ router.post('/createpost', async (req, res) => {
 });
 
 // If the user is already logged in, redirect the request to another route
+//3001/login
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/displayposts');
@@ -108,15 +114,15 @@ router.get('/login', (req, res) => {
 });
 
 
-router.get('/signup', (req, res) => {
-    // If the user is already logged in, redirect the request to another route
-    if (req.session.logged_in) {
-        res.redirect('/displayposts');
-        return;
-    }
+// router.get('/signup', (req, res) => {
+//     // If the user is already logged in, redirect the request to another route
+//     if (req.session.logged_in) {
+//         res.redirect('/displayposts');
+//         return;
+//     }
 
-    res.render('signup');
-});
+//     res.render('signup');
+// });
 
 router.get("/get-signature", (req, res) => {
     const timestamp = Math.round(new Date().getTime() / 1000)

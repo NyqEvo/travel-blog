@@ -4,7 +4,7 @@
     <div class="col-lg-6">{{> calendar-jung}}</div>
     <div class="col-lg-6">Notes
       <div id="photo-dump">Photos
-        <img src="{{post.img}}" class="img-thumbnail" alt="place holder" />
+        <img src="/images/{{post.img}}" class="img-thumbnail" alt="place holder" />
 
         {{! Cloudinary }}
 
@@ -28,16 +28,17 @@
         {{/each}}
         <div class="input-group">
           <textarea class="form-control" id="info" rows="2" name="comment.info"></textarea>
+          <p id="currentTag" data="1">Food/Drink</p>
           <div class="dropdown">
             <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
               aria-expanded="false">
               Tags
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><button class="dropdown-item" type="button">Accommodations</button></li>
-              <li><button class="dropdown-item" type="button">Food/Drink</button></li>
-              <li><button class="dropdown-item" type="button">Transportation</button></li>
-              <li><button class="dropdown-item" type="button">Entertainment</button></li>
+              <li><button class="dropdown-item" id="1" type="button">Food/Drink</button></li>
+              <li><button class="dropdown-item" id="2" type="button">Transportation</button></li>
+              <li><button class="dropdown-item" id="3" type="button">Entertainment</button></li>
+              <li><button class="dropdown-item" id="4" type="button">Accommodations</button></li>
             </ul>
           </div>
         </div>
