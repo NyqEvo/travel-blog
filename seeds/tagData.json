@@ -3,16 +3,12 @@
         "info": "food and drink"
     },
     {
-
-        "info": "transportation",
-        "post_id": 2
+        "info": "transportation"
     },
     {
-        "info": "entertainment",
-        "post_id": 3
+        "info": "entertainment"
     },
     {
-        "info": "accommodation",
-        "post_id": 4
+        "info": "accommodation"
     }
 ]

@@ -78,7 +78,7 @@ function renderCalendar() {
       date = day.getDate();
       list += "<td class='day' value='" + date + "'>";
       list +=
-        '<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" value="' +
+        '<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#noteModal" value="' +
         date +
         '">';
       list += date;
@@ -91,7 +91,23 @@ function renderCalendar() {
   console.log();
 
 }
+var myModalEl = document.getElementById("noteModal");
+
+myModalEl.addEventListener("show.bs.modal", function (event) {
+  var yearElement = document.getElementById("year");
+  var monthElement = document.getElementById("month");
+  
+  var year = parseInt(yearElement.value);
+  var mon = parseInt(monthElement.value);
+  var day = parseInt(event.relatedTarget.innerHTML);
+
+  fetch(`/api/note/`+ year + "/" + mon + "/" + day)
+  .then ((response) => response.text())
+    .then((text) => {
+    var ta = document.querySelector(".note-textarea");
+    ta.innerHTML = text;
+  });
+});
 
 renderCalendar();
-
 

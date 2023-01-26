@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment, Tag, PostTags } = require('../../models');
 
+//3001/api/comment
 router.get('/', async (req, res) => {
 
     try {
@@ -13,6 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+//3001/api/comment/#
 router.get('/:id', async (req, res) => {
 
     try {
@@ -25,6 +27,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+//3001/api/comment
 router.post('/', async (req, res) => {
     try {
         const commentData = await Comment.create({

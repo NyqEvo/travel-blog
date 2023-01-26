@@ -22,11 +22,12 @@ const loginFormHandler = async (event) => {
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
+  alert('signup');
   const name = document.querySelector('#name-signup').value.trim();
-  const signupEmail = document.querySelector('#email-signup').value.trim();
-  const signupPassword = document.querySelector('#password-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
 
-  if (name && signupEmail && signupPassword) {
+  if (name && email && password) {
     const response = await fetch('/api/user', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
@@ -38,6 +39,8 @@ const signupFormHandler = async (event) => {
     } else {
       alert(response.statusText);
     }
+  } else {
+    alert("must provide name, email, password" + name + " " + signupEmail + " " + signupPassword) 
   }
 };
 
