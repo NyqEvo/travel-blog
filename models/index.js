@@ -3,6 +3,8 @@ const Comment = require('./Comment');
 const Post = require('./Post');
 const User = require('./User');
 const PostTags = require('./postTags');
+const Note = require('./Note');
+
 
 
 Tag.belongsToMany(Comment, {through: PostTags});
@@ -33,4 +35,12 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { Tag, Comment, Post, User, PostTags }
+Post.hasMany(Note, {
+    foreignKey: 'post_id'
+});
+
+Note.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+module.exports = { Tag, Comment, Post, User, PostTags, Note }
