@@ -46,23 +46,24 @@ class Calendar {
     return weeks;
   }
 
-  monthDays(year, month) {
-    var getDayOrZero = function getDayOrZero(date) {
-      return date.getMonth() === month ? date.getDate() : 0;
-    };
-    return this.monthDates(year, month, getDayOrZero);
-  }
+  // monthDays(year, month) {
+  //   var getDayOrZero = function getDayOrZero(date) {
+  //     return date.getMonth() === month ? date.getDate() : 0;
+  //   };
+  //   return this.monthDates(year, month, getDayOrZero);
+  // }
 }
 
 function renderCalendar() {
   var list = "";
   var l = document.getElementById("calendar");
   var cal = new Calendar();
-  var yearElement = document.getElementById("year");
 
+  var yearElement = document.getElementById("year");
   yearElement.addEventListener("change", function() {
     renderCalendar();
   });
+
   var monthElement = document.getElementById("month");
   monthElement.addEventListener("change", function () {
     renderCalendar();
@@ -78,9 +79,7 @@ function renderCalendar() {
       date = day.getDate();
       list += "<td class='day' value='" + date + "'>";
       list +=
-        '<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#noteModal" value="' +
-        date +
-        '">';
+        '<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#noteModal" value="' + date + '">';
       list += date;
       list += "</button>";
       list += "</td>";
