@@ -92,13 +92,19 @@ function renderCalendar() {
 }
 var myModalEl = document.getElementById("noteModal");
 
+var myModalSaveBtn = document.getElementById('save-btn');
+
+var year = '';
+var month = '';
+var day = '';
+
 myModalEl.addEventListener("show.bs.modal", function (event) {
   var yearElement = document.getElementById("year");
   var monthElement = document.getElementById("month");
   
-  var year = parseInt(yearElement.value);
-  var mon = parseInt(monthElement.value);
-  var day = parseInt(event.relatedTarget.innerHTML);
+  year = parseInt(yearElement.value);
+  mon = parseInt(monthElement.value);
+  day = parseInt(event.relatedTarget.innerHTML);
 
   fetch(`/api/note/`+ year + "/" + mon + "/" + day)
   .then ((response) => response.text())
@@ -107,6 +113,28 @@ myModalEl.addEventListener("show.bs.modal", function (event) {
     ta.innerHTML = text;
   });
 });
+
+myModalSaveBtn.addEventListener('click', function (event) {
+  var ta = document.querySelector('.note-textarea');
+  var text = ta.innerHTML;
+
+  var postIdEl = document.getElementById('post_id');
+  var postId = postIdEl.innerHTML;
+  
+
+  fetch('/api/note/' + year + '/' + mon + '/' + day, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      info: text,
+      post_id: postId
+    })
+  }).then(data => console.log('posted successfully'))
+  .catch(err => console.log(err));
+})
+
 
 renderCalendar();
 
