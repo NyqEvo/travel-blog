@@ -1,3 +1,5 @@
+// this code is originally from https://github.com/ramalho/calendar.js  and has been refactored and modified to work with this project
+
 var CalendarException = function CalendarException(message) {
   this.message = message;
   this.toString = function () {
@@ -45,14 +47,16 @@ class Calendar {
     } while (date.getMonth() <= month && date.getFullYear() === year);
     return weeks;
   }
-
-  // monthDays(year, month) {
-  //   var getDayOrZero = function getDayOrZero(date) {
-  //     return date.getMonth() === month ? date.getDate() : 0;
-  //   };
-  //   return this.monthDates(year, month, getDayOrZero);
-  // }
 }
+
+// This begins my code for rendering the calendar and modal which holds the note for the date
+
+var myModalEl = document.getElementById("noteModal");
+var myModalSaveBtn = document.getElementById("save-btn");
+
+var year = "";
+var month = "";
+var day = "";
 
 function renderCalendar() {
   var list = "";
@@ -60,7 +64,7 @@ function renderCalendar() {
   var cal = new Calendar();
 
   var yearElement = document.getElementById("year");
-  yearElement.addEventListener("change", function() {
+  yearElement.addEventListener("change", function () {
     renderCalendar();
   });
 
@@ -79,7 +83,9 @@ function renderCalendar() {
       date = day.getDate();
       list += "<td class='day' value='" + date + "'>";
       list +=
-        '<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#noteModal" value="' + date + '">';
+        '<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#noteModal" value="' +
+        date +
+        '">';
       list += date;
       list += "</button>";
       list += "</td>";
@@ -88,53 +94,67 @@ function renderCalendar() {
   }
   l.innerHTML = list;
   console.log();
-
 }
-var myModalEl = document.getElementById("noteModal");
-
-var myModalSaveBtn = document.getElementById('save-btn');
-
-var year = '';
-var month = '';
-var day = '';
 
 myModalEl.addEventListener("show.bs.modal", function (event) {
+  var ta2 = document.querySelector(".note-textarea");
+  ta2.textContent = "";
   var yearElement = document.getElementById("year");
   var monthElement = document.getElementById("month");
-  
+  var post_id = document.getElementById("post_id").innerText;
+
   year = parseInt(yearElement.value);
   mon = parseInt(monthElement.value);
   day = parseInt(event.relatedTarget.innerHTML);
 
-  fetch(`/api/note/`+ year + "/" + mon + "/" + day)
-  .then ((response) => response.text())
+  fetch(`/api/note/` + post_id + "/" + year + "/" + mon + "/" + day)
+    .then((response) => response.json())
     .then((text) => {
-    var ta = document.querySelector(".note-textarea");
-    ta.innerHTML = text;
-  });
+      console.log(`/api/note/` + year + "/" + mon + "/" + day);
+      console.log("got back" + text);
+      var ta = document.querySelector(".note-textarea");
+      console.log("this is before what is in the ta:" + ta.textContent);
+      ta.textContent = text;
+      console.log("this is what is in the ta:" + ta.textContent);
+    });
 });
 
-myModalSaveBtn.addEventListener('click', function (event) {
-  var ta = document.querySelector('.note-textarea');
-  var text = ta.innerHTML;
+myModalSaveBtn.addEventListener("click", function (event) {
+  var ta = document.querySelector(".note-textarea");
+  var text = ta.value;
+  console.log("text is: " + text);
 
-  var postIdEl = document.getElementById('post_id');
+  var postIdEl = document.getElementById("post_id");
   var postId = postIdEl.innerHTML;
-  
+  console.log(postId);
 
-  fetch('/api/note/' + year + '/' + mon + '/' + day, {
-    method: 'POST',
+  fetch("/api/note/" + postId + "/" + year + "/" + mon + "/" + day, {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      info: text,
-      post_id: postId
+      info: text
     })
-  }).then(data => console.log('posted successfully'))
-  .catch(err => console.log(err));
-})
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      console.log("posted successfully");
+    })
+    .catch((err) => console.log(err));
+});
 
+// This is the code that is supposed to clear the modal when it is closed but it is not working
+
+  // document.querySelectorAll(".modal").forEach(function (modal) {
+  //   modal.addEventListener("hide.bs.modal", function () {
+  //     modal
+  //       .querySelectorAll("input:not([type=hidden]),textarea,select")
+  //       .forEach(function (el) {
+  //         el.value = "";
+  //       });
+  //   });
+  // });
 
 renderCalendar();
-

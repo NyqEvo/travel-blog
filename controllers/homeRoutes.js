@@ -11,7 +11,7 @@ const cloudinaryConfig = cloudinary.config({
     secure: true
 })
 
-//render homepage
+//render landing page
 //3001/landing
 router.get('/', async (req, res) => {
     try {
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 //3001/displayposts
 router.get('/displayposts', async (req, res) => {
     try {
-        req.session.logged_in = true;   // ugly hack
+        req.session.logged_in = true;  
         const postdata = await Post.findAll({
             // include: [
             //     {
@@ -113,17 +113,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-
-// router.get('/signup', (req, res) => {
-//     // If the user is already logged in, redirect the request to another route
-//     if (req.session.logged_in) {
-//         res.redirect('/displayposts');
-//         return;
-//     }
-
-//     res.render('signup');
-// });
-
+//cloudinary
 router.get("/get-signature", (req, res) => {
     const timestamp = Math.round(new Date().getTime() / 1000)
     const signature = cloudinary.utils.api_sign_request(
@@ -135,6 +125,7 @@ router.get("/get-signature", (req, res) => {
     res.json({ timestamp, signature })
 });
 
+//cloudinary
 router.post("/do-something-with-photo", async (req, res) => {
     const success = await fetch('/api/cloudinary/public-id')
     const expectedSignature = cloudinary.utils.api_sign_request({ public_id: req.body.public_id, version: req.body.version }, cloudinaryConfig.api_secret)

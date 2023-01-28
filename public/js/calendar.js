@@ -1,3 +1,5 @@
+// This file is part of the project "Calendar Picker". It is not actually used in this project.
+
 // Polyfill for Element.prototype.closest (for IE 9+)
 if (!Element.prototype.matches) {
   Element.prototype.matches =
