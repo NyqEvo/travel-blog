@@ -7,7 +7,6 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 
-//var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var passport = require("passport");
 var SQLiteStore = require("connect-sqlite3")(session);
@@ -39,7 +38,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session(sess));
 app.use(passport.authenticate("session"));
 app.use(routes);
-//app.use("/", indexRouter);
 app.use("/", authRouter);
 
 // Inform Express.js on which template engine to use
