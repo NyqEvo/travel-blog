@@ -1,3 +1,5 @@
+// Code needed for sign in with Google
+
 var sqlite3 = require("sqlite3");
 var mkdirp = require("mkdirp");
 var crypto = require("crypto");

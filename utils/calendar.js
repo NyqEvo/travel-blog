@@ -1,3 +1,5 @@
+// This is code that goes with the Calendar Picker that we did not use in the project.
+
 var month = [
 	"January",
 	"February",

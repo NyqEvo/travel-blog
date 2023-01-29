@@ -1,3 +1,5 @@
+// Code for sign in with Google
+
 var express = require("express");
 
 var passport = require("passport");
@@ -5,6 +7,8 @@ var GoogleStrategy = require("passport-google-oidc");
 var db = require("../db");
 
 var router = express.Router();
+
+router.get("/login/federated/google", passport.authenticate("google"));
 
 passport.use(
   new GoogleStrategy(
@@ -85,8 +89,6 @@ passport.deserializeUser(function (user, cb) {
 router.get("/login", function (req, res, next) {
   res.render("login");
 });
-
-router.get("/login/federated/google", passport.authenticate("google"));
 
 router.get(
   "/oauth2/redirect/google",

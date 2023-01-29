@@ -20,6 +20,8 @@ var SQLiteStore = require("connect-sqlite3")(session);
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(passport.authenticate("session"));
+
 app.use(
   session({
     secret: "keyboard cat",
@@ -28,7 +30,5 @@ app.use(
     store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
   })
 );
-
-app.use(passport.authenticate("session"));
 
 module.exports = app;
