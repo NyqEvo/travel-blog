@@ -33,7 +33,6 @@ There is a known issue with the calendar. When a note is placed on a date, that 
 ## Contact
 This project was created by Xavier Vergara, Jung Dettelback, Bryan Davie and Isaac Daniels.
 Contact us at:
-    []
     [jdettelback@gmail.com](mailto:jdettelback@gmail.com) if you have any questions.  
 
 You can see more of our work at:
@@ -42,10 +41,15 @@ You can see more of our work at:
     <https://github.com/gnrt>
     <https://github.com/isaackice>
 
-  ![screenshot](https://raw.githubusercontent.com/jdettelback/notetaker/main/images/screenshotnotetaker.png)
+  ![screenshot](https://raw.githubusercontent.com/NyqEvo/travel-blog/main/public/images/screenshottravelblog1.png)
   
-  ![screenshot](https://raw.githubusercontent.com/jdettelback/notetaker/main/images/screenshotnotetaker2.png)
-
+  ![screenshot](https://raw.githubusercontent.com/NyqEvo/travel-blog/main/public/images/screenshottravelblog2.png)
+  
+  ![screenshot](https://raw.githubusercontent.com/NyqEvo/travel-blog/main/public/images/screenshottravelblog3.png)
+  
+  ![screenshot](https://raw.githubusercontent.com/NyqEvo/travel-blog/main/public/images/screenshottravelblog4.png)
+  
 Link to deployed website:
 
-https://techblog-jung.herokuapp.com/
+https://travel-blog-jung.herokuapp.com/
+
